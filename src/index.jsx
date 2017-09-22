@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search';
 
 // components
 import SearchBar from './components/search_bar';
 
 // consts
 const API_KEY = 'AIzaSyCs-xGMalkiyWH86FwhaLzfaeQWBwZxrrA';
+YTSearch({key:API_KEY, term: 'surfing'}, function(data){
+    console.log(data);
+})
 
 // Create a new component
 const App = () => {
