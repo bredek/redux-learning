@@ -1,4 +1,5 @@
 // imports
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -36,9 +37,16 @@ class App extends Component {
     }
 
     render() {
+        // adding lodash debounce method to slow down(throttle) function density
+
+        const videoSearch = _.debounce((term) => {
+            this.videoSearch(term),
+            1000
+        });
+
         return (
             <div>
-                <SearchBar onSearchTermChange = {(term) => {this.videoSearch({term})}}/>
+                <SearchBar onSearchTermChange = {videoSearch}/>
                 <VideoDetail 
                     video={this.state.selectedVideo} />
                 <VideoList 
