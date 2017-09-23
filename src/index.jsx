@@ -18,19 +18,14 @@ class App extends Component {
         this.state = {
             videos: []
         };
-
-
     }
 
     componentWillMount() {
-
         YTSearch({ key: API_KEY, term: 'surfing' }, (videos) => {
             this.setState({ videos });
         })
-        
     }
 
-    
     render() {
         return (
             <div>
@@ -39,10 +34,11 @@ class App extends Component {
 
                 <SearchBar />
                 <VideoList videos={this.state.videos} />
-                
+
             </div>
         )
     }
 }
+
 // Render component
 ReactDOM.render(<App />, document.querySelector('.container'));
