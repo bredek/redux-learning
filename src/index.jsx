@@ -17,13 +17,17 @@ class App extends Component {
         super(props);
 
         this.state = {
-            videos: []
+            videos: [],
+            selectedVideo: []
         };
     }
 
     componentWillMount() {
         YTSearch({ key: API_KEY, term: 'React tutorials' }, (videos) => {
-            this.setState({ videos });
+            this.setState({ 
+                videos: videos,
+                selectedVideo: videos[0]
+            });
         })
     }
 
