@@ -6,6 +6,7 @@ import YTSearch from 'youtube-api-search';
 // components
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 // consts
 const API_KEY = 'AIzaSyCs-xGMalkiyWH86FwhaLzfaeQWBwZxrrA';
@@ -21,7 +22,7 @@ class App extends Component {
     }
 
     componentWillMount() {
-        YTSearch({ key: API_KEY, term: 'surfing' }, (videos) => {
+        YTSearch({ key: API_KEY, term: 'React tutorials' }, (videos) => {
             this.setState({ videos });
         })
     }
@@ -30,6 +31,7 @@ class App extends Component {
         return (
             <div>
                 <SearchBar />
+                <VideoDetail video={this.state.videos[0]} />
                 <VideoList videos={this.state.videos} />
             </div>
         )
